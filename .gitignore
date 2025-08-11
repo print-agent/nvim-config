@@ -39,3 +39,10 @@ luac.out
 *.x86_64
 *.hex
 
+tags
+test.sh
+.luarc.json
+nvim
+
+spell/
+lazy-lock.json
