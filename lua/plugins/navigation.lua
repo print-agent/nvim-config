@@ -6,7 +6,7 @@ this manages movement within and between files.
 
 Think of this as:
   package router
-  
+
   func NavigateToDefinition(symbol string) Location { ... }
   func JumpToFile(path string) { ... }
   func FindReferences(symbol string) []Location { ... }
@@ -72,6 +72,7 @@ return {
         typescript = { 'eslint_d' },
         javascriptreact = { 'eslint_d' },
         typescriptreact = { 'eslint_d' },
+        json = { 'jsonlint' },
         python = { 'pylint' },
       }
 

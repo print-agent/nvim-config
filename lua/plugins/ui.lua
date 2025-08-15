@@ -6,7 +6,7 @@ this provides interface elements and visual enhancements.
 
 Think of this as:
   package ui
-  
+
   func StatusBar() Component { ... }
   func HelpModal() Component { ... }
   func KeymapHints() Component { ... }
@@ -80,8 +80,12 @@ return {
       statusline.setup { use_icons = vim.g.have_nerd_font }
 
       -- Custom location format
-      statusline.section_location = function()
-        return '%2l:%-2v'
+      statusline.section_location = function(args)
+        if statusline.is_truncated(args.trunc_width or 75) then
+          return '%2l : %-2v'
+        else
+          return ' %p%%   %2l:%-2v'
+        end
       end
     end,
   },
@@ -103,6 +107,7 @@ return {
   --     'nvim-tree/nvim-web-devicons',
   --     'MunifTanjim/nui.nvim',
   --   },
+  --   lazy = false,
   --   cmd = 'Neotree',
   --   keys = {
   --     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
