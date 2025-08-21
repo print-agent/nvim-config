@@ -131,7 +131,7 @@ M.servers = {
         connections = {
           {
             driver = 'postgresql',
-            dataSourceName = 'host=localhost port=5432 user=postgres password=3157617493 dbname=postgres sslmode=disable',
+            dataSourceName = 'postgres://greenlight:pass@localhost/greenlight?sslmode=disable',
           },
           {
             driver = 'sqlite3',
