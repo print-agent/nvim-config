@@ -73,14 +73,28 @@ return {
   {
     'bluz71/vim-moonfly-colors',
     name = 'moonfly',
-    lazy = false, -- Load immediately
+    lazy = true,
     priority = 1000,
     config = function()
       -- Enable true colors (required for Moonfly)
       vim.opt.termguicolors = true
-      -- Set the colorscheme
-      vim.cmd.colorscheme 'moonfly'
+      -- Only call this if you want to switch to moonfly
+      -- vim.cmd.colorscheme 'moonfly'
       -- Enable italic comments
+      vim.api.nvim_set_hl(0, 'Comment', { italic = true })
+    end,
+  },
+
+  -- Nightfly theme (active)
+  {
+    'bluz71/vim-nightfly-colors',
+    name = 'nightfly',
+    lazy = false, -- Load immediately
+    priority = 1000,
+    config = function()
+      vim.opt.termguicolors = true
+      -- Set the colorscheme
+      vim.cmd.colorscheme 'nightfly'
       vim.api.nvim_set_hl(0, 'Comment', { italic = true })
     end,
   },
