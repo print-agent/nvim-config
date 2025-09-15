@@ -6,7 +6,7 @@ this provides intelligent code parsing and highlighting.
 
 Think of this as:
   package parser
-  
+
   func ParseGo(source string) AST { ... }
   func HighlightSyntax(ast AST) HighlightTree { ... }
   func DetectLanguage(file string) Language { ... }
@@ -18,6 +18,9 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     main = 'nvim-treesitter.configs',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
     opts = {
       -- Languages to ensure are installed (like compiler targets)
       ensure_installed = {
@@ -63,6 +66,13 @@ return {
       indent = {
         enable = true,
         disable = { 'ruby' },
+      },
+
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true,
+        },
       },
     },
   },
