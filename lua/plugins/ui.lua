@@ -139,15 +139,14 @@ return {
 
       -- custom location format
       statusline.section_location = function(args)
-        local time = os.date '%h:%m'
         local line = vim.fn.line '.'
         local col = vim.fn.col '.'
         local percent = math.floor((line / vim.fn.line '$') * 100)
 
         if statusline.is_truncated(args.trunc_width or 75) then
-          return string.format('%d:%d   %s', line, col, time)
+          return string.format('%d:%d', line, col)
         else
-          return string.format(' %d%%   %d:%d   %s', percent, line, col, time)
+          return string.format(' %d%%   %d:%d', percent, line, col)
         end
       end
     end,

@@ -145,9 +145,24 @@ M.servers = {
   -- Web development servers
   ts_ls = {
     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact' },
+    init_options = {
+      plugins = {
+        {
+          name = '@styled/typescript-styled-plugin',
+          location = 'global',
+        },
+      },
+    },
     settings = {
       typescript = {
-        preferences = { disableSuggestions = false },
+        preferences = {
+          disableSuggestions = false,
+          includePackageJsonAutoImports = 'auto',
+        },
+        suggest = {
+          includeCompletionsForModuleExports = true,
+          includeCompletionsForImportStatements = true,
+        },
         inlayHints = {
           includeInlayParameterNameHints = 'all',
           includeInlayParameterNameHintsWhenArgumentMatchesName = false,
@@ -159,7 +174,14 @@ M.servers = {
         },
       },
       javascript = {
-        preferences = { disableSuggestions = false },
+        preferences = {
+          disableSuggestions = false,
+          includePackageJsonAutoImports = 'auto',
+        },
+        suggest = {
+          includeCompletionsForModuleExports = true,
+          includeCompletionsForImportStatements = true,
+        },
         inlayHints = {
           includeInlayParameterNameHints = 'all',
           includeInlayParameterNameHintsWhenArgumentMatchesName = false,
@@ -216,15 +238,13 @@ M.servers = {
 M.ensure_installed = {
   -- Formatters
   'stylua', -- Lua formatter
-  'prettier', -- Web formatter
-  'prettierd', -- Faster prettier
+  'prettierd', -- Faster prettier (removed prettier for duplicate)
   'black', -- Python formatter
   'isort', -- Python import sorter
   'gofumpt', -- Go formatter
-  'sql-formatter', -- SQL formatter
 
   -- Linters
-  'eslint_d', -- Fast ESLint
+  'eslint-lsp', -- Fast ESLint
   'pylint', -- Python linter
 
   -- Language Servers
